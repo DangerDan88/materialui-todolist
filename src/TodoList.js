@@ -9,6 +9,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 
 const TodoList = ({ todos, deleteTodo }) => {
   return (
+      // we map thru the todos and get their index as it is easiest way to delete correct item from our state array.
     <List>
       {todos.map((todo, index) => (
         <ListItem key={index.toString()} dense button>
@@ -17,7 +18,7 @@ const TodoList = ({ todos, deleteTodo }) => {
           <ListItemSecondaryAction>
             <IconButton
               aria-label="Delete"
-              // onClick handler for adding a delete button to each todo item rendered
+              // onClick handler for adding a delete button to each todo item rendered and you can delete based of index of item.
               onClick={() => {
                 deleteTodo(index);
               }}

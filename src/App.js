@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import ToDoForm from "./TodoForm";
 import TodoList from "./TodoList";
+import useTodoState from "./useTodoState";
 
-function App() {
-  const [todos, setTodos] = useState([]);
+const App = () => {
+  const { todos, addTodo, deleteTodo } = useTodoState([]);
+
   return (
     <div className="App">
       <Typography component="h1" variant="h2">
@@ -16,13 +18,14 @@ function App() {
           const trimmedText = todoText.trim();
 
           if (trimmedText.length > 0) {
-            setTodos([...todos, trimmedText]);
+            addTodo(trimmedText);
           }
         }}
       />
-      <TodoList todos={todos} />
+
+      <TodoList todos={todos} deleteTodo={deleteTodo} />
     </div>
   );
-}
+};
 
 export default App;
