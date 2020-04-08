@@ -5,7 +5,10 @@ import TodoList from "./TodoList";
 import useTodoState from "./useTodoState";
 
 const App = () => {
-  const { todos, addTodo, deleteTodo } = useTodoState([]);
+  const { todos, addTodo, deleteTodo } = useTodoState(
+    localStorage.getItem(Object.keys("myValueInLocalStorage")) || []
+  );
+
 
   return (
     <div className="App">
