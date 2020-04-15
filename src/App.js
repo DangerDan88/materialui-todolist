@@ -5,15 +5,14 @@ import TodoList from "./TodoList";
 import useTodoState from "./useTodoState";
 
 const App = () => {
-  const { todos, addTodo, deleteTodo } = useTodoState(
-    localStorage.getItem(Object.keys("myValueInLocalStorage")) || []
-  );
+  const local = [...localStorage.getItem("myValueInLocalStorage")];
 
+  const { todos, addTodo, deleteTodo } = useTodoState(local || []);
 
   return (
     <div className="App">
       <Typography component="h1" variant="h2">
-        Todos
+        Dan's Todo List
       </Typography>
 
       <ToDoForm
